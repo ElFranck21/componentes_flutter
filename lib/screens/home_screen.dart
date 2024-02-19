@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practica3_/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,7 +14,9 @@ class HomeScreen extends StatelessWidget {
           children: <Widget> [
             ListTile(
               title: Text('Entradas',
-                style:Theme.of(context).textTheme.headlineLarge ,),
+                style: AppTheme.lightTheme.textTheme.headlineLarge,
+                ),
+               // style:Theme.of(context).textTheme.headlineLarge ,),
               subtitle: Text('Recuperar informacion de TexField',
                 style: Theme.of(context).textTheme.bodySmall,),
               leading:const Icon(Icons.inbox_rounded),
@@ -26,8 +29,8 @@ class HomeScreen extends StatelessWidget {
                 style:Theme.of(context).textTheme.headlineLarge ,),
               subtitle:  Text('Recuperar muchos elementos',
                 style: Theme.of(context).textTheme.bodySmall,),
-              leading: Icon(Icons.list_alt_sharp),
-              trailing: Icon(Icons.arrow_right_outlined),
+              leading: const Icon(Icons.list_alt_sharp),
+              trailing:const  Icon(Icons.arrow_right_outlined),
 
             ),const Divider(),
             ListTile(
@@ -35,8 +38,8 @@ class HomeScreen extends StatelessWidget {
                 style:Theme.of(context).textTheme.headlineLarge ,),
               subtitle:  Text('Manejo de notificaciones',
               style: Theme.of(context).textTheme.bodySmall,),
-              leading: Icon(Icons.notification_important),
-              trailing: Icon(Icons.arrow_right_outlined),
+              leading:const  Icon(Icons.notification_important),
+              trailing:const  Icon(Icons.arrow_right_outlined),
             ),
           ],
         ),
