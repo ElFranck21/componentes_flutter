@@ -18,7 +18,11 @@ class AppTheme{
           headlineLarge: GoogleFonts.acme(
             fontSize: 30,
             fontWeight: FontWeight.bold,
-            color: primaryColor,
+            color: backColor,
+            decoration:TextDecoration.underline,
+            decorationColor: secundaryColor,
+            decorationStyle:TextDecorationStyle.double,
+            decorationThickness: 1.2, 
           ), 
 
           // fuente para textos muy pequeños 
