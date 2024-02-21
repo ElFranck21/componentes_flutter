@@ -59,8 +59,9 @@ class HomeScreen extends StatelessWidget {
                onTap: () {
                 final ruta3= MaterialPageRoute(builder: (context){
                   return const Notifications();
+                   
                 });
-                Navigator.push(context, ruta3);
+                 Navigator.push(context, ruta3);
               },
             ),
           ],
