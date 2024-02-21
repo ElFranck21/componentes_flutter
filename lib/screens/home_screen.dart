@@ -1,4 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:practica3_/screens/infinite_list.dart';
+import 'package:practica3_/screens/inputs.dart';
+import 'package:practica3_/screens/notifications.dart';
 import 'package:practica3_/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,7 +26,12 @@ class HomeScreen extends StatelessWidget {
                 style: AppTheme.lightTheme.textTheme.bodySmall,),
               leading:const Icon(Icons.inbox_rounded, color: AppTheme.secundaryColor,),
               trailing:const Icon(Icons.arrow_right_outlined, color: AppTheme.secundaryColor),
-              
+              onTap: () {
+                final ruta1= MaterialPageRoute(builder: (context){
+                  return const Inputs();
+                });
+                Navigator.push(context, ruta1);
+              },
             ),
             const Divider(),
             ListTile(
@@ -31,6 +41,12 @@ class HomeScreen extends StatelessWidget {
                 style: AppTheme.lightTheme.textTheme.bodySmall,),
               leading: const Icon(Icons.list_alt_sharp, color: AppTheme.secundaryColor),
               trailing:const  Icon(Icons.arrow_right_outlined, color: AppTheme.secundaryColor),
+               onTap: () {
+                final ruta2= MaterialPageRoute(builder: (context){
+                  return const InfiniteList();
+                });
+                Navigator.push(context, ruta2);
+              },
 
             ),const Divider(),
             ListTile(
@@ -40,6 +56,12 @@ class HomeScreen extends StatelessWidget {
               style: AppTheme.lightTheme.textTheme.bodySmall,),
               leading:const  Icon(Icons.notification_important, color: AppTheme.secundaryColor),
               trailing:const  Icon(Icons.arrow_right_outlined, color: AppTheme.secundaryColor),
+               onTap: () {
+                final ruta3= MaterialPageRoute(builder: (context){
+                  return const Notifications();
+                });
+                Navigator.push(context, ruta3);
+              },
             ),
           ],
         ),
