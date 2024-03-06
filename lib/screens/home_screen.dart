@@ -1,6 +1,5 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:practica3_/screens/images_screen.dart';
 import 'package:practica3_/screens/infinite_list.dart';
 import 'package:practica3_/screens/inputs.dart';
 import 'package:practica3_/screens/notifications.dart';
@@ -25,7 +24,10 @@ class HomeScreen extends StatelessWidget {
               subtitle: Text('Recuperar informacion de TexField',
                 style: AppTheme.lightTheme.textTheme.bodySmall,),
               leading:const Icon(Icons.inbox_rounded, color: AppTheme.secundaryColor,),
-              trailing:const Icon(Icons.arrow_right_outlined, color: AppTheme.secundaryColor),
+              trailing:const CircularProgressIndicator(
+                value: 0.05,
+              ),
+             // trailing:const Icon(Icons.arrow_right_outlined, color: AppTheme.secundaryColor),
               onTap: () {
                 final ruta1= MaterialPageRoute(builder: (context){
                   return const Inputs();
@@ -48,7 +50,8 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(context, ruta2);
               },
 
-            ),const Divider(),
+            ),
+            const Divider(),
             ListTile(
               title: Text('Notificaciones',
                 style:AppTheme.lightTheme.textTheme.headlineLarge,),
@@ -62,6 +65,21 @@ class HomeScreen extends StatelessWidget {
                    
                 });
                  Navigator.push(context, ruta3);
+              },
+            ),
+             const Divider(),
+            ListTile(
+              title: Text('Imagenes',
+                style:AppTheme.lightTheme.textTheme.headlineLarge,),
+              subtitle:  Text('Widgets de manipulacion de imagener',
+              style: AppTheme.lightTheme.textTheme.bodySmall,),
+              leading:const  Icon(Icons.image, color: AppTheme.secundaryColor,),
+              trailing:const  Icon(Icons.arrow_right_outlined, color: AppTheme.secundaryColor),
+               onTap: () {
+                final ruta4= MaterialPageRoute(builder: (context){
+                  return const ImagesScreen();
+                });
+                 Navigator.push(context, ruta4);
               },
             ),
           ],
