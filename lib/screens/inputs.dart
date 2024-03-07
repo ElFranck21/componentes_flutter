@@ -11,6 +11,7 @@ class Inputs extends StatefulWidget {
 class _InputsState extends State<Inputs> {
   bool valueSwitch=false;
   double sliderValue=0.0;
+  int footRadio=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,8 @@ class _InputsState extends State<Inputs> {
                entradaTexto(),
                entradaSwitch(),
                entradaSlider(),
-                  ElevatedButton(
+               entradaRadio(),
+                 const ElevatedButton(
                   //style: AppTheme.lightTheme.elevatedButtonTheme,
                   onPressed: null, 
                   child: Text('Guardar', 
@@ -93,6 +95,46 @@ class _InputsState extends State<Inputs> {
             });
            
           }),
+      ],
+    );
+  }
+  Column entradaRadio(){
+    return Column(
+      children: [
+        Text('Que prefieres?',
+        style: AppTheme.lightTheme.textTheme.headlineLarge,),
+        ListTile(
+          title: Text('tacos al pastor?',
+          style: AppTheme.lightTheme.textTheme.bodySmall,),
+          leading: Radio(
+            value: 1,
+            groupValue: footRadio,
+            onChanged: (value){
+              setState(() {
+                 footRadio=value!;
+             // print('Comida seleccionada: $footRadio');
+              });
+             
+            },
+          ),
+          
+        ),
+         ListTile(
+          title: Text('Tacos Campechanos?',
+          style: AppTheme.lightTheme.textTheme.bodySmall,),
+          leading: Radio(
+            value: 2,
+            groupValue: footRadio,
+            onChanged: (value){
+              setState(() {
+                 footRadio=value!;
+            //  print('Comida seleccionada: $footRadio');
+              });
+             
+            },
+          ),
+          
+        )
       ],
     );
   }
