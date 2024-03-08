@@ -12,6 +12,9 @@ class _InputsState extends State<Inputs> {
   bool valueSwitch=false;
   double sliderValue=0.0;
   int footRadio=0;
+  bool postrecheck1=false;
+  bool postrecheck2=false;
+  bool postrecheck3=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,24 +22,31 @@ class _InputsState extends State<Inputs> {
         title: const Text(
           'Entradas'
           )),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-               entradaTexto(),
-               entradaSwitch(),
-               entradaSlider(),
-               entradaRadio(),
-                 const ElevatedButton(
-                  //style: AppTheme.lightTheme.elevatedButtonTheme,
-                  onPressed: null, 
-                  child: Text('Guardar', 
-             )),
-              
-          
-          ], 
+      body: ListView(
+        children:[ Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+                 entradaTexto(),
+                 entradaSwitch(),
+                 entradaSlider(),
+                 entradaRadio(),
+                 Text('¿Que postres te gustan?',
+                 style: AppTheme.lightTheme.textTheme.headlineLarge,
+                 ),
+                 entradasChekc(),
+                   const ElevatedButton(
+                    //style: AppTheme.lightTheme.elevatedButtonTheme,
+                    onPressed: null, 
+                    child: Text('Guardar', 
+               )),
+                
+            
+            ], 
+          ),
         ),
+        ]
       ),
       bottomNavigationBar: BottomNavigationBar(
         items:const [
@@ -135,6 +145,42 @@ class _InputsState extends State<Inputs> {
           ),
           
         )
+      ],
+    );
+  }
+  Row entradasChekc(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+          Text('Helado',
+          style: AppTheme.lightTheme.textTheme.bodySmall,),
+          Checkbox(value: postrecheck1,
+          onChanged: (value){
+            setState(() {
+              postrecheck1=value!;
+            });
+          }),
+          Text(
+            'Chocoflan',
+            style: AppTheme.lightTheme.textTheme.bodySmall,
+            ),
+            Checkbox(value: postrecheck2,
+          onChanged: (value){
+            setState(() {
+              postrecheck2=value!;
+            });
+          }),
+          
+          Text(
+            'Pastel con rompope',
+            style: AppTheme.lightTheme.textTheme.bodySmall,
+            ),
+            Checkbox(value: postrecheck3,
+          onChanged: (value){
+            setState(() {
+              postrecheck3=value!;
+            });
+          }),
       ],
     );
   }
