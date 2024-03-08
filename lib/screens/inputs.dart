@@ -1,4 +1,11 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:practica3_/screens/home_screen.dart';
+import 'package:practica3_/screens/images_screen.dart';
+import 'package:practica3_/screens/infinite_list.dart';
+import 'package:practica3_/screens/notifications.dart';
 import 'package:practica3_/theme/app_theme.dart';
 
 class Inputs extends StatefulWidget {
@@ -15,6 +22,7 @@ class _InputsState extends State<Inputs> {
   bool postrecheck1=false;
   bool postrecheck2=false;
   bool postrecheck3=false;
+  int selectedIndex= 0;// Elemento seleccionado de BotttonNavigationBar
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,17 +57,58 @@ class _InputsState extends State<Inputs> {
         ]
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: (index) => openScreen(context, index),
+        backgroundColor: AppTheme.disableWidgetColor,
         items:const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            backgroundColor: AppTheme.primaryColor,
+            icon: Icon(Icons.home,),
             label:'Inicio',
             ),
           BottomNavigationBarItem(
-            icon:Icon (Icons.next_plan),
-            label: 'Datos'),
+            icon:Icon (Icons.list),
+            label: 'Listas Infinitas'),
+
+
+           BottomNavigationBarItem(
+            icon:Icon (Icons.notification_add),
+            label: 'Notificaciones'),
+            
+            BottomNavigationBarItem(
+            icon:Icon (Icons.image),
+            label: 'Imagenes'),
+
+             BottomNavigationBarItem(
+            icon:Icon (Icons.exit_to_app),
+            label: 'Salir'),
         ]
         ,),
     );
+  }
+  openScreen(BuildContext context, int index){
+    MaterialPageRoute ruta= MaterialPageRoute(builder: (context) =>const HomeScreen());
+
+    switch(index){
+      case 0:ruta= MaterialPageRoute(builder: (context) =>const HomeScreen());
+      break;
+
+      case 1:
+      ruta= MaterialPageRoute(builder: (context) =>const InfiniteList());
+      break;
+
+      case 2:
+      ruta= MaterialPageRoute(builder: (context) =>const Notifications());
+      break;
+
+      case 3:
+      ruta= MaterialPageRoute(builder: (context) =>const ImagesScreen());
+      break;
+    }
+    setState(() {
+      selectedIndex= index;
+      Navigator.push(context, ruta);
+    });
   }
 
   TextField entradaTexto() {
@@ -101,7 +150,7 @@ class _InputsState extends State<Inputs> {
           onChanged: (value){
             setState(() {
                sliderValue=value;
-            print('Valor del Slider: $sliderValue'); 
+           // print('Valor del Slider: $sliderValue'); 
             });
            
           }),
